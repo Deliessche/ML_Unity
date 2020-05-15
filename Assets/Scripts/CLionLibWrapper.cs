@@ -40,5 +40,19 @@ public static class CLionLibWrapper
 
 	[DllImport("lib")]
 	public static extern double[] lines_sum(double[] lines, int lines_count, int line_size);
+	
+	[DllImport("lib")]
+	public static extern IntPtr mlp_model_create(int[] npl, int npl_size);
 
+	[DllImport("lib")]
+	public static extern IntPtr mlp_model_predict_classification(IntPtr mlp, double[] inputs);
+
+	[DllImport("lib")]
+	public static extern IntPtr mlp_model_predict_regression(IntPtr mlp, double[] inputs);
+
+	[DllImport("lib")]
+	public static extern void mlp_model_train_classification(IntPtr mlp, double[] dataset_inputs, int dataset_length, int inputs_size, double[] dataset_expected_output, int output_size, int iterations_count, double alpha);
+
+	[DllImport("lib")]
+	public static extern void mlp_model_train_regression(IntPtr mlp, double[] dataset_inputs, int dataset_length, int inputs_size, double[] dataset_expected_output, int output_size, int iterations_count, double alpha);
 }
